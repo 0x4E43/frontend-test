@@ -17,52 +17,41 @@ export default function Login() {
   setBtnName("Add Data");
   return (
     <>
-      <div class="card w-96 bg-base-100 shadow-xl m-auto">
-        <div class="card-body">
-          <h2 class="card-title text-white font-bold">Login!</h2>
-          <input type="text" placeholder="Your name here" class="input input-bordered input-success w-full max-w-xs text-white" />
-          <input type="email" placeholder="Your email here" class="input input-bordered input-success w-full max-w-xs text-white" />
-          <input type="password" placeholder="**************" class="input input-bordered input-success w-full max-w-xs text-white" />
-          <div class="card-actions justify-end">
-            <button class="btn btn-accent">{btnName()}</button>
+      <main class="text-center mx-auto text-gray-300 p-4">
+          <div class="card w-3/6 bg-base-100 shadow-xl m-auto content-center">
+            <h2 class="max-6-xs text-accent font-thin uppercase m-3 text-left">
+              You are Awesome
+            </h2>
+            <h1 class="max-6-xs text-6xl text-white font-thin m-3 text-left">
+              Create new account <span class="font-bold text-accent">.</span>
+            </h1>
+            <p>
+              Don't have an account?{" "}
+              <span class="text-accent">
+                {/* TODO: use global state to change form mode */}
+                <a href="#signup" >signup</a>
+              </span>
+            </p>
+            <div class="content-center card-body">
+              <h2 class="card-title text-white font-bold m-auto">Login!</h2>
+              <input
+                type="email"
+                placeholder="Your email here"
+                class="input input-bordered input-success w-full max-w-md text-white m-auto"
+              />
+              <input
+                type="password"
+                placeholder="**************"
+                class="input input-bordered input-success w-full max-w-md text-white m-auto"
+              />
+              <div class="card-actions justify-center">
+                <button class="btn btn-accent">Login</button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="overflow-x-auto mt-10">
-        <table class="table w-full text-white">
-          <thead>
-            <tr class=" font-bold">
-              <th></th>
-              <th>Name</th>
-              <th>email</th>
-              <th>Password</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>1</th>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>Blue</td>
-              <td>
-                <button class="btn btn-accent">Edit</button>
-              </td>
-              <td>
-                <button class="btn btn-error">Delete</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        </main>
     </>
   );
 }
 
-async function callApi() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/todos");
-  const data = await response.json();
-  console.log(data.slice(0, 5).map((item: any) => item.title));
-  return data.slice(0, 5);
-}
+
