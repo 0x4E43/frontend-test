@@ -1,5 +1,5 @@
 import { createSignal } from "solid-js";
-import Login from "./auth/Login";
+import LoginComponent from "./auth/LoginComponent";
 
 export default function Counter() {
   const [count, setCount] = createSignal(0);
@@ -11,7 +11,7 @@ export default function Counter() {
     >
       Clicks: {count()}
     </button> 
-    <Login/>
+    <LoginComponent/>
    </>
   );
 }

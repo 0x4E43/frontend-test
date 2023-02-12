@@ -2,19 +2,14 @@ import { stringify } from "postcss";
 import { createSignal, For, Signal } from "solid-js";
 import { createStore } from "solid-js/store";
 import { json } from "solid-start";
-
-export default function Login() {
-  const [cats, setCats] = createSignal([
-    { id: "J---aiyznGQ", name: "Keyboard Cat" },
-    { id: "z_AbfPXTKms", name: "Maru" },
-    { id: "OUtn3pvWmpg", name: "Henri The Existential Cat" },
-  ]);
-
-  const [name, setName] = createSignal("");
-  const [btnName, setBtnName] = createSignal("");
-  const [userDarta, setUserDarta] = createStore([]);
-
-  setBtnName("Add Data");
+import { getAuthFormSignal,setAuthFormSignal } from "~/stores/login-store";
+export default function LoginComponent() {
+  const [currentForm, setCurrentForm] = createSignal('signin');
+  const changeFormMode = () => {
+      setCurrentForm(currentForm() === 'signin' ? 'signup' : 'signin');
+      setAuthFormSignal(currentForm());
+      console.log("FUNC: ",getAuthFormSignal());
+    };
   return (
     <>
       <main class="text-center mx-auto text-gray-300 p-4">
@@ -28,12 +23,16 @@ export default function Login() {
             <p>
               Don't have an account?{" "}
               <span class="text-accent">
-                {/* TODO: use global state to change form mode */}
-                <a href="#signup" >signup</a>
-              </span>
+                  <a href="#" onClick={changeFormMode}>login</a>
+                </span>
             </p>
             <div class="content-center card-body">
               <h2 class="card-title text-white font-bold m-auto">Login!</h2>
+              <input
+                type="text"
+                placeholder="Your name here"
+                class="input input-bordered input-success w-full max-w-md text-white m-auto"
+              />
               <input
                 type="email"
                 placeholder="Your email here"
